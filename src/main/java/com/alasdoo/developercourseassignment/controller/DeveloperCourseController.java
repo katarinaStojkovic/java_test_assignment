@@ -2,7 +2,7 @@ package com.alasdoo.developercourseassignment.controller;
 
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO;
 import com.alasdoo.developercourseassignment.service.impl.DeveloperCourseServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/developercourse")
 @CrossOrigin
+@RequiredArgsConstructor
 public class DeveloperCourseController {
-
-    @Autowired
-    private DeveloperCourseServiceImpl developerCourseServiceImpl;
+    private final DeveloperCourseServiceImpl developerCourseServiceImpl;
 
     @GetMapping(value = "/getCourse/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public DeveloperCourseDTO selectDeveloperCourse(@PathVariable("id") Integer id) {

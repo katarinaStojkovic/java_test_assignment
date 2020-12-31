@@ -2,6 +2,7 @@ package com.alasdoo.developercourseassignment.controller;
 
 import com.alasdoo.developercourseassignment.dto.StudentDeveloperCourseDTO;
 import com.alasdoo.developercourseassignment.service.impl.StudentDeveloperCourseServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,10 +20,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/studentdevelopercourse")
 @CrossOrigin
+@RequiredArgsConstructor
 public class StudentDeveloperCourseController {
-
-    @Autowired
-    private StudentDeveloperCourseServiceImpl studentDeveloperCourseServiceImpl;
+    private final StudentDeveloperCourseServiceImpl studentDeveloperCourseServiceImpl;
 
     @GetMapping(value = "/getStudentCourse/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public StudentDeveloperCourseDTO selectStudentDeveloperCourse(@PathVariable("id") Integer id) {
