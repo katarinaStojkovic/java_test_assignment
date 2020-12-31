@@ -52,3 +52,5 @@ build/
 /src/frontend/npm-debug.log*
 /src/frontend/yarn-debug.log*
 /src/frontend/yarn-error.log*
+
+src/main/resources/application-dev.properties
