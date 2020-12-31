@@ -10,24 +10,28 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
+
 import java.util.*;
 import java.net.MalformedURLException;
-import java.net.URL;
-public class LocalhostTestTest {
+
+public class NavigationSeleniumTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
+
     @Before
     public void setUp() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-         driver = new ChromeDriver();
+        driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
     }
+
     @After
     public void tearDown() {
         driver.quit();
     }
+
     @Test
     public void navigationTest() {
         driver.get("http://localhost:3000/student");
