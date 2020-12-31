@@ -5,6 +5,5 @@ CREATE TABLE developer_course (
     developer_course_name VARCHAR(250) NOT NULL,
     cost_per_class INT NOT NULL,
     classes_per_week INT NOT NULL,
-    PRIMARY KEY (id),
-    KEY developer_course_teacher_fk_idx (developer_course_teacher_fk)
+    PRIMARY KEY (id)
 );
