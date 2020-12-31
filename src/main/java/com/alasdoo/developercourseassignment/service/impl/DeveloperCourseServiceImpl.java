@@ -7,6 +7,7 @@ import com.alasdoo.developercourseassignment.repository.DeveloperCourseRepositor
 import com.alasdoo.developercourseassignment.repository.StudentRepository;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
 import com.alasdoo.developercourseassignment.service.DeveloperCourseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +16,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class DeveloperCourseServiceImpl implements DeveloperCourseService {
-
-    @Autowired
-    private DeveloperCourseRepository developerCourseRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
-
-    @Autowired
-    private TeacherRepository teacherRepository;
-
-    @Autowired
-    private DeveloperCourseMapper developerCourseMapper;
+    private final DeveloperCourseRepository developerCourseRepository;
+    private final StudentRepository studentRepository;
+    private final TeacherRepository teacherRepository;
+    private final DeveloperCourseMapper developerCourseMapper;
 
     @Override
     public DeveloperCourseDTO findOne(Integer id) {
@@ -41,7 +35,7 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
 
     @Override
     public List<DeveloperCourseDTO> findAll() {
-        return developerCourseRepository.findAll().stream().map(i -> developerCourseMapper.transformToDTO(i)).collect(Collectors.toList());
+        return developerCourseRepository.findAll().stream().map(developerCourseMapper::transformToDTO).collect(Collectors.toList());
     }
 
     @Override

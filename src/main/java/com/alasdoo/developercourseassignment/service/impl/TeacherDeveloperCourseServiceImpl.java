@@ -9,7 +9,7 @@ import com.alasdoo.developercourseassignment.repository.DeveloperCourseRepositor
 import com.alasdoo.developercourseassignment.repository.TeacherDeveloperCourseRepository;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
 import com.alasdoo.developercourseassignment.service.TeacherDeveloperCourseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,19 +17,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class TeacherDeveloperCourseServiceImpl implements TeacherDeveloperCourseService {
-
-    @Autowired
-    private TeacherDeveloperCourseRepository teacherDeveloperCourseRepository;
-
-    @Autowired
-    private TeacherRepository teacherRepository;
-
-    @Autowired
-    private DeveloperCourseRepository developerCourseRepository;
-
-    @Autowired
-    private TeacherDeveloperCourseMapper teacherDeveloperCourseMapper;
+    private final TeacherDeveloperCourseRepository teacherDeveloperCourseRepository;
+    private final TeacherRepository teacherRepository;
+    private final DeveloperCourseRepository developerCourseRepository;
+    private final TeacherDeveloperCourseMapper teacherDeveloperCourseMapper;
 
     @Override
     public TeacherDeveloperCourseDTO findOne(Integer id) {
