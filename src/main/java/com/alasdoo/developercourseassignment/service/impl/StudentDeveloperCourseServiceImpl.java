@@ -9,6 +9,7 @@ import com.alasdoo.developercourseassignment.repository.DeveloperCourseRepositor
 import com.alasdoo.developercourseassignment.repository.StudentDeveloperCourseRepository;
 import com.alasdoo.developercourseassignment.repository.StudentRepository;
 import com.alasdoo.developercourseassignment.service.StudentDeveloperCourseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +18,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class StudentDeveloperCourseServiceImpl implements StudentDeveloperCourseService {
-
-    @Autowired
-    private StudentDeveloperCourseRepository studentDeveloperCourseRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
-
-    @Autowired
-    private DeveloperCourseRepository developerCourseRepository;
-
-    @Autowired
-    private StudentDeveloperCourseMapper studentDeveloperCourseMapper;
+    private final StudentDeveloperCourseRepository studentDeveloperCourseRepository;
+    private final StudentRepository studentRepository;
+    private final DeveloperCourseRepository developerCourseRepository;
+    private final StudentDeveloperCourseMapper studentDeveloperCourseMapper;
 
     @Override
     public StudentDeveloperCourseDTO findOne(Integer id) {
@@ -43,7 +37,7 @@ public class StudentDeveloperCourseServiceImpl implements StudentDeveloperCourse
 
     @Override
     public List<StudentDeveloperCourseDTO> findAll() {
-        return studentDeveloperCourseRepository.findAll().stream().map(i -> studentDeveloperCourseMapper.transformToDTO(i)).collect(Collectors.toList());
+        return studentDeveloperCourseRepository.findAll().stream().map(studentDeveloperCourseMapper::transformToDTO).collect(Collectors.toList());
     }
 
     @Override
